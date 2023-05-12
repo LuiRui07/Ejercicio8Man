@@ -1,0 +1,241 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > AvlNode</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">avl</a>
+</div>
+
+<h1>Coverage Summary for Class: AvlNode (avl)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AvlNode</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    95%
+  </span>
+  <span class="absValue">
+    (19/20)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    96,9%
+  </span>
+  <span class="absValue">
+    (31/32)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;//  AvlNode
+&nbsp;//
+&nbsp;//  Author:
+&nbsp;//       Antonio J. Nebro &lt;antonio@lcc.uma.es&gt;
+&nbsp;//
+&nbsp;//  Copyright (c) 2013 Antonio J. Nebro
+&nbsp;//
+&nbsp;//  This program is free software: you can redistribute it and/or modify
+&nbsp;//  it under the terms of the GNU Lesser General Public License as published by
+&nbsp;//  the Free Software Foundation, either version 3 of the License, or
+&nbsp;//  (at your option) any later version.
+&nbsp;//
+&nbsp;//  This program is distributed in the hope that it will be useful,
+&nbsp;//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+&nbsp;//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+&nbsp;//  GNU Lesser General Public License for more details.
+&nbsp;//
+&nbsp;//  You should have received a copy of the GNU Lesser General Public License
+&nbsp;//  along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+&nbsp;//
+&nbsp;
+&nbsp;package avl;
+&nbsp;
+&nbsp;/**
+&nbsp; * Created with IntelliJ IDEA. User: Antonio J. Nebro Date: 08/07/13 Time: 15:46
+&nbsp; */
+&nbsp;public class AvlNode&lt;T&gt; {
+&nbsp;
+&nbsp;    private AvlNode&lt;T&gt; left;
+&nbsp;    private AvlNode&lt;T&gt; right;
+&nbsp;    private AvlNode&lt;T&gt; parent;
+&nbsp;
+&nbsp;    private int height;
+&nbsp;
+&nbsp;    private AvlNode&lt;T&gt; closestNode;
+&nbsp;
+&nbsp;    private T item;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Constructor
+&nbsp;     *
+&nbsp;     * @param item
+&nbsp;     */
+<b class="fc">&nbsp;    public AvlNode(T item) {</b>
+<b class="fc">&nbsp;        this.left = null;</b>
+<b class="fc">&nbsp;        this.right = null;</b>
+<b class="fc">&nbsp;        this.parent = null;</b>
+<b class="fc">&nbsp;        height = 0;</b>
+<b class="fc">&nbsp;        closestNode = null;</b>
+&nbsp;
+<b class="fc">&nbsp;        this.item = item;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public AvlNode&lt;T&gt; getLeft() {
+<b class="fc">&nbsp;        return left;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setLeft(AvlNode&lt;T&gt; left) {
+<b class="fc">&nbsp;        this.left = left;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public AvlNode&lt;T&gt; getParent() {
+<b class="fc">&nbsp;        return parent;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setParent(AvlNode&lt;T&gt; parent) {
+<b class="fc">&nbsp;        this.parent = parent;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public AvlNode&lt;T&gt; getRight() {
+<b class="fc">&nbsp;        return right;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setRight(AvlNode&lt;T&gt; right) {
+<b class="fc">&nbsp;        this.right = right;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public T getItem() {
+<b class="fc">&nbsp;        return item;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setItem(T item) {
+<b class="fc">&nbsp;        this.item = item;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public int getHeight() {
+<b class="fc">&nbsp;        return height;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setHeight(int height) {
+<b class="nc">&nbsp;        this.height = height;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void updateHeight() {
+<b class="fc">&nbsp;        if (!hasLeft() &amp;&amp; !hasRight()) {</b>
+<b class="fc">&nbsp;            height = 0;</b>
+<b class="fc">&nbsp;        } else if (!hasRight()) {</b>
+<b class="fc">&nbsp;            height = 1 + getLeft().getHeight();</b>
+<b class="fc">&nbsp;        } else if (!hasLeft()) {</b>
+<b class="fc">&nbsp;            height = 1 + getRight().getHeight();</b>
+&nbsp;        } else {
+<b class="fc">&nbsp;            height = 1 + Math.max(getLeft().getHeight(), getRight().getHeight());</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public AvlNode&lt;T&gt; getClosestNode() {
+<b class="fc">&nbsp;        return closestNode;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setClosestNode(AvlNode&lt;T&gt; closestNode) {
+<b class="fc">&nbsp;        this.closestNode = closestNode;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean hasParent() {
+<b class="fc">&nbsp;        return parent != null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean hasLeft() {
+<b class="fc">&nbsp;        return left != null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean hasRight() {
+<b class="fc">&nbsp;        return right != null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean isLeaf() {
+&nbsp;
+<b class="fc">&nbsp;        return (!hasLeft() &amp;&amp; !hasRight());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean hasOnlyALeftChild() {
+<b class="fc">&nbsp;        return (hasLeft() &amp;&amp; !hasRight());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean hasOnlyARightChild() {
+<b class="fc">&nbsp;        return (hasRight() &amp;&amp; !hasLeft());</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-05-12 13:10</div>
+</div>
+</body>
+</html>
