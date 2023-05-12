@@ -9,6 +9,7 @@ import java.util.Comparator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
 
 /**
  * Created with IntelliJ IDEA. User: Antonio J. Nebro Date: 08/07/13
@@ -698,4 +699,34 @@ public class AvlTreeTest {
     avlTree.delete(20);
     assertEquals("testDeletingTopNode", " | 12 | 8 | 4 | 10 | 22 | 14 | 24", avlTree.toString());
   }
+
+  /**
+   * @author Guillermo Pichaco Panal
+   * Pablo Alarcon Carrión
+   * Pablo Garcia Platero
+   * Luis Ruiz Nuñez
+   * Angela Roza Moreno
+   **/
+  @Test
+  @DisplayName("Test que comprueba el metodo insert()")
+  public void testInsertNode(){
+
+    //When
+    assertTrue(avlTree.avlIsEmpty());
+    avlTree.insert(4);
+
+    //Then
+    assertFalse(avlTree.avlIsEmpty());
+  }
+
+  @Test
+  @DisplayName("Test que comprueba el metodo search() cuando el arbol es nulo")
+  public void testSearchNodeWhenAVLTreeIsNull(){
+    //Given
+    AvlNode<Integer> actual = avlTree.search(2);
+
+    //Then
+    assertEquals(null,actual);
+  }
+
 }
