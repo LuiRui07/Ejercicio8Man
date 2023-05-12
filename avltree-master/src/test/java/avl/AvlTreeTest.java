@@ -729,25 +729,4 @@ public class AvlTreeTest {
     assertEquals(null,actual);
   }
 
-
-  /**
-   * Este test como tal no cumple su funcion, debido a que la funcion sucesor de por si te devuelve el
-   * último left child, por lo que un sucesor nunca va a tener un left child.
-   */
-  @Test
-  @DisplayName("Test que comprueba el metodo delete() para un nodo con ambos hijos, cuyo sucesor tiene solo un hijo izquierdo ")
-  public void testDeleteNodeWithOnlyALeftChild() {
-    //Given
-    avlTree.insert(10);
-    avlTree.insert(5);
-    avlTree.insert(2);
-    avlTree.insert(1);
-
-    //When
-    avlTree.delete(5);
-
-    // Then
-
-  }
-
 }

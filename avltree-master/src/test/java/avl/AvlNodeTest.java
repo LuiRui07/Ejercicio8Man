@@ -44,7 +44,7 @@ public class AvlNodeTest {
     public void shouldSetHeight() {
         int expectedHeight = 1000213;
         node.setHeight(expectedHeight);
-        assertEquals("Height is different from expected.", expectedHeight, node.getHeight());
+        assertEquals( expectedHeight, node.getHeight());
     }
 
     /**
