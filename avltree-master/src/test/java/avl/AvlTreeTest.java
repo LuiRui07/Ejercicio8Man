@@ -9,6 +9,7 @@ import java.util.Comparator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
 
 /**
  * Created with IntelliJ IDEA. User: Antonio J. Nebro Date: 08/07/13
@@ -698,4 +699,55 @@ public class AvlTreeTest {
     avlTree.delete(20);
     assertEquals("testDeletingTopNode", " | 12 | 8 | 4 | 10 | 22 | 14 | 24", avlTree.toString());
   }
+
+  /**
+   * @author Guillermo Pichaco Panal
+   * Pablo Alarcon Carrión
+   * Pablo Garcia Platero
+   * Luis Ruiz Nuñez
+   * Angela Roza Moreno
+   **/
+  @Test
+  @DisplayName("Test que comprueba el metodo insert()")
+  public void testInsertNode(){
+
+    //When
+    assertTrue(avlTree.avlIsEmpty());
+    avlTree.insert(4);
+
+    //Then
+    assertFalse(avlTree.avlIsEmpty());
+  }
+
+  @Test
+  @DisplayName("Test que comprueba el metodo search() cuando el arbol es nulo")
+  public void testSearchNodeWhenAVLTreeIsNull(){
+    //Given
+    AvlNode<Integer> actual = avlTree.search(2);
+
+    //Then
+    assertEquals(null,actual);
+  }
+
+
+  /**
+   * Este test como tal no cumple su funcion, debido a que la funcion sucesor de por si te devuelve el
+   * último left child, por lo que un sucesor nunca va a tener un left child.
+   */
+  @Test
+  @DisplayName("Test que comprueba el metodo delete() para un nodo con ambos hijos, cuyo sucesor tiene solo un hijo izquierdo ")
+  public void testDeleteNodeWithOnlyALeftChild() {
+    //Given
+    avlTree.insert(10);
+    avlTree.insert(5);
+    avlTree.insert(2);
+    avlTree.insert(1);
+
+    //When
+    avlTree.delete(5);
+
+    // Then
+
+  }
+
 }
